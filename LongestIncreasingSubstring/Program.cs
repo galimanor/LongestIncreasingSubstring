@@ -1,10 +1,8 @@
 ﻿using LongestIncreasingSubstring.Manager;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace LongestIncreasingSubstring
 {
@@ -12,7 +10,10 @@ namespace LongestIncreasingSubstring
     {
         public static void Main()
         {
-            Console.WriteLine("Enter your list of numbers: ");
+            byte[] inputBuffer = new byte[8192];
+            var inputStream = Console.OpenStandardInput(inputBuffer.Length);
+            Console.SetIn(new StreamReader(inputStream, Console.InputEncoding, false, inputBuffer.Length));
+            Console.WriteLine("Enter your list of numbers: ");            
             var userInput = Console.ReadLine();
 
             while (userInput == null || userInput == string.Empty || Regex.Replace(userInput, @"\s+", "") == string.Empty)
@@ -32,6 +33,8 @@ namespace LongestIncreasingSubstring
                 Console.WriteLine("Longest increasing subsequence:");
                 Console.WriteLine(string.Join(" ", longestIncreasingSubsequence));
             }
+
+            Console.Read();
         }
     }
 }
