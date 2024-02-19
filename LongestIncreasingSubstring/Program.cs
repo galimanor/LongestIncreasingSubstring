@@ -10,11 +10,8 @@ namespace LongestIncreasingSubstring
     {
         public static void Main()
         {
-            byte[] inputBuffer = new byte[8192];
-            var inputStream = Console.OpenStandardInput(inputBuffer.Length);
-            Console.SetIn(new StreamReader(inputStream, Console.InputEncoding, false, inputBuffer.Length));
-            Console.WriteLine("Enter your list of numbers: ");            
-            var userInput = Console.ReadLine();
+            string inputFile = @"C:\Code\LongestIncreasingSubstring\LongestIncreasingSubstring\Input.txt";
+            var userInput = new StreamReader(inputFile).ReadToEnd(); ;
 
             while (userInput == null || userInput == string.Empty || Regex.Replace(userInput, @"\s+", "") == string.Empty)
             {
